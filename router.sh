@@ -46,5 +46,6 @@ iptables -I FORWARD 1 -o $LAN -m state --state RELATED,ESTABLISHED -j ACCEPT $C
     --dhcp-range=$IPS_FOR_DHCP,2m \
     --log-dhcp \
     --leasefile-ro \
+    --dhcp-authoritative \
     --conf-dir=dnsmasq_configs,*.dnsmasq.conf \
     -d
