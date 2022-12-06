@@ -2,7 +2,8 @@
 set -e
 
 WAN=wlp0s20f3
-LAN=enp58s0u1u4u3
+#LAN=enp58s0u1u4u3
+LAN=enp0s20f0u4
 GW="10.3.189.1/24"
 DHCP_MAX_LEASES=90
 DHCP_LEASE_OFFSET=10
@@ -43,7 +44,7 @@ iptables -I FORWARD 1 -o $LAN -m state --state RELATED,ESTABLISHED -j ACCEPT $C
 /usr/sbin/dnsmasq \
     --interface=$LAN \
     --bind-interfaces \
-    --dhcp-range=$IPS_FOR_DHCP,2m \
+    --dhcp-range=$IPS_FOR_DHCP,12h \
     --log-dhcp \
     --leasefile-ro \
     --dhcp-authoritative \
