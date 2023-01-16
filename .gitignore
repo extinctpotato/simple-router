@@ -1,2 +1,3 @@
 dnsmasq_configs/**
 !dnsmasq_configs/.gitkeep
+*.ini
