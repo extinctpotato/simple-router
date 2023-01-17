@@ -1,0 +1,8 @@
+[interfaces]
+wan=wlp0s20f3
+lan=enp58s0u1u4u3
+gateway=10.3.189.1/24
+
+[dhcp]
+max_leases=90
+lease_offset=10
