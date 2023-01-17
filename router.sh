@@ -20,6 +20,7 @@ IPS_FOR_DHCP=$(echo "$IPS_IN_SUBNET" \
 C='-m comment --comment "simple-router"'
 
 _term() {
+    ip link set dev $interfaces__lan down
     ip addr del $interfaces__gateway dev $interfaces__lan
 	iptables-save | grep -v "simple-router" | iptables-restore
 	exit 0
@@ -32,6 +33,7 @@ trap _term EXIT
 set -x
 
 ip addr add $interfaces__gateway dev $interfaces__lan
+ip link set dev $interfaces__lan up
 
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
