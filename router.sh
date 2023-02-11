@@ -3,7 +3,7 @@ set -e
 
 this_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-eval "$($this_dir/utils/export_config.py $1)"
+eval "$("$this_dir"/utils/export_config.py "$1")"
 
 IPS_IN_SUBNET=$(nmap -sL -n $interfaces__gateway \
     | awk '/Nmap scan report/{print $NF}' \
