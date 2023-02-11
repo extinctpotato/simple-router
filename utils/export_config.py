@@ -2,6 +2,8 @@
 
 import os, sys, configparser, shlex
 
+DEFAULT_CONFIG_NAME = "simple_router.ini"
+
 def __read_usable_config() -> str:
     """
     Check if a file specified in command line arguments exists.
@@ -26,7 +28,7 @@ def __read_usable_config() -> str:
                 f"{argv_path} does not exist!"
                 )
     except IndexError:
-        for p in (checked_paths := ["simple_router.ini", "/etc/simple_router.ini"]):
+        for p in (checked_paths := [DEFAULT_CONFIG_NAME, f"/etc/{DEFAULT_CONFIG_NAME}"]):
             if os.path.exists(p):
                 return p
         raise FileNotFoundError(
